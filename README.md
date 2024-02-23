@@ -22,6 +22,6 @@ How do I get set up?
 6. For other command, open package.json file.
 
 
-
+test
 
 
