@@ -14,7 +14,7 @@ integration-test-job:
     - cd reports
 
   artifacts:
-  expire_in: 1 week
+    expire_in: 1 week
     paths:
       - $CI_PROJECT_DIR/reports/
     when: always
