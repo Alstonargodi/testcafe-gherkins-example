@@ -2,6 +2,7 @@ image: node:hydrogen-slim
 
 stages:
   - test
+  - report
 
 integration-test-job:
   stage: test
