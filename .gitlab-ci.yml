@@ -1,0 +1,21 @@
+image: node:hydrogen-slim
+
+stages:          # List of stages for jobs, and their order of execution
+  - test
+  - report
+
+integration-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  image: cypress/browsers:latest
+  before_script:
+    - npm install
+
+  script:
+    - npm run test
+    - cd  reports
+    - ls
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - $CI_PROJECT_DIR/reports/
+    when: always
