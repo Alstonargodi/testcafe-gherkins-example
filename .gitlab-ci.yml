@@ -13,7 +13,6 @@ integration-test-job:   # This job runs in the test stage.
   script:
     - npm run test
     - cd reports
-    - ls
 
   artifacts:
     expire_in: 1 week
