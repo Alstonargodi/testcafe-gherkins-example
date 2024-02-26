@@ -19,6 +19,7 @@
     "eslint": "^8.56.0",
     "gherkin-testcafe": "^7.2.0",
     "npm": "^10.3.0",
-    "testcafe": "^3.5.0"
+    "testcafe": "^3.5.0",
+    "testcafe-reporter-html": "^1.4.6"
   }
 }
