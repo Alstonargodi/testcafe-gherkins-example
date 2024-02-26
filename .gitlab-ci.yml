@@ -3,19 +3,18 @@ image: node:hydrogen-slim
 stages:
   - test
 
-
-integration-test-job:   # This job runs in the test stage.
-  stage: test    # It only starts when the job in the build stage completes successfully.
-  image: cypress/browsers:latest
-  before_script:
+integration-test-job:
+  stage: test
+  image: cypress/browsers:latest
+  before_script:
     - npm install
 
-  script:
+  script:
     - npm run test
     - cd reports
 
-  artifacts:
-    expire_in: 1 week
-    paths:
+  artifacts:
+  expire_in: 1 week
+    paths:
       - $CI_PROJECT_DIR/reports/
-    when: always
+    when: always
