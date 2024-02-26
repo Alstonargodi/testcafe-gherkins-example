@@ -11,7 +11,7 @@ integration-test-job:
     - npm install
 
   script:
-    - npm run test-cucumber
+    - npm run test
     - cd reports
 
   artifacts:
