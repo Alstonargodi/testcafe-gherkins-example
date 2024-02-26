@@ -1,6 +1,7 @@
 image: node:hydrogen-slim
 
 stages:
+  - build
   - test
   - report
 
