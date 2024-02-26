@@ -1,6 +1,7 @@
 image: node:hydrogen-slim
 
 stages:          # List of stages for jobs, and their order of execution
+  - build
   - test
   - report
 
