@@ -1,21 +1,33 @@
-image: node:hydrogen-slim
+name: Integration Test
 
-stages:
-  - test
-  - report
+on:
+  push:
+    branches:
+      - main
 
-integration-test-job:
-  stage: test
-  image: cypress/browsers:latest
-  before_script:
-    - npm install
+jobs:
+  integration-test-job:
+    runs-on: ubuntu-latest
 
-  script:
-    - npm run test
-    - cd reports
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-  artifacts:
-    when: always
-    expire_in: 1 week
-    paths:
-      - $CI_PROJECT_DIR/reports/
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run integration tests
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run test
+
+      - name: Archive test reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: reports/
