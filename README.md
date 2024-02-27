@@ -12,7 +12,6 @@ Answer :
 3. Click 3 kind of pop up
 4. All testcases written on features folder for manual and automation
 
-
 How do I get set up?
 1. Install latest NVM and Node
 2. Clone this repo
