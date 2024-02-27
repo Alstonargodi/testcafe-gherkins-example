@@ -1,21 +1,28 @@
-image: node:hydrogen-slim
+version: 2.1
 
-stages:
-  - test
-  - report
+jobs:
+  integration-test-job:
+    docker:
+      - image: cypress/browsers:latest
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Run Tests
+          command: npm run test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - reports
 
-integration-test-job:
-  stage: test
-  image: cypress/browsers:latest
-  before_script:
-    - npm install
-
-  script:
-    - npm run test
-    - cd reports
-
-  artifacts:
-    when: always
-    expire_in: 1 week
-    paths:
-      - $CI_PROJECT_DIR/reports/
+workflows:
+  version: 2
+  test:
+    jobs:
+      - integration-test-job:
+          filters:
+            branches:
+              only:
+                - master
